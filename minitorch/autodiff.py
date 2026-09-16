@@ -64,6 +64,7 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
     """
     visited = set()
     order: List[Variable] = []
+
     def dfs(var: Variable) -> None:
         if var.unique_id not in visited:
             visited.add(var.unique_id)
@@ -71,6 +72,7 @@ def topological_sort(variable: Variable) -> Iterable[Variable]:
                 for parent in var.parents:
                     dfs(parent)
                 order.append(var)
+
     dfs(variable)
     return reversed(order)
 
